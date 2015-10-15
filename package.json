@@ -1,0 +1,8 @@
+{
+  "name": "ocelot2d",
+  "version": "1.0.0",
+  "description": "",
+  "main": "core/Engine.js",
+  "author": "",
+  "license": "ISC"
+}
