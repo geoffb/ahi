@@ -10,6 +10,15 @@ exports.testAABB = function (a, b) {
 	);
 };
 
+exports.testPointRect = function (p, r) {
+	return (
+		p.x >= r.x &&
+		p.y >= r.y &&
+		p.x <= r.x + r.width &&
+		p.y <= r.y + r.height
+	);
+};
+
 exports.getMSV = function (a, b) {
 	var msv = new Vector2();
 
