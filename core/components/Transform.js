@@ -8,6 +8,8 @@ var exports = module.exports = function Transform (conf) {
 	this.scale = new Vector2(conf.scale.x, conf.scale.y);
 	this.rotation = conf.rotation;
 	this.worldSpace = conf.worldSpace;
+	this.layer = conf.layer;
+	this.layerOrder = conf.layerOrder;
 };
 
 exports.defaults = {
@@ -20,7 +22,9 @@ exports.defaults = {
 		y: 1
 	},
 	rotation: 0,
-	worldSpace: true
+	worldSpace: true,
+	layer: 0,
+	layerOrder: 0
 };
 
 var proto = exports.prototype;

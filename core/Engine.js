@@ -149,6 +149,14 @@ proto._render = function Engine__render () {
 
 	var entities = this._renderEntities;
 
+	entities.sort(function (a, b) {
+		if (a.transform.layer === b.transform.layer) {
+			return a.transform.layerOrder - b.transform.layerOrder;
+		} else {
+			return a.transform.layer - b.transform.layer;
+		}
+	});
+
 	for (var i = 0, j = entities.length; i < j; ++i) {
 		var entity = entities[i];
 		ctx.save();
