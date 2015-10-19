@@ -4,6 +4,7 @@ var Entity = require("./Entity");
 var stage = require("./stage");
 var time = require("./time");
 var Collection = require("../utils/Collection");
+var tween = require("./tween");
 
 // Core components and prefabs
 Entity.defineComponents(require("./components"));
@@ -43,7 +44,7 @@ proto.stop = function Engine_stop () {
 };
 
 proto.update = function Engine_update (dt) {
-	this._preUpdate();
+	this._preUpdate(dt);
 	this._updateEntities(dt);
 	this._collideEntities();
 	this._render();
@@ -56,10 +57,11 @@ proto._initCamera = function (width, height) {
 	this.addEntity(cam);
 };
 
-proto._preUpdate = function Engine__preUpdate () {
+proto._preUpdate = function Engine__preUpdate (dt) {
 	this._renderEntities.length = 0;
 	this._collisionEntities.length = 0;
 	this._quadTree.clear();
+	tween.update(dt);
 };
 
 proto._updateEntities = function Engine__updateEntities (dt) {

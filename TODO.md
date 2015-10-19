@@ -11,7 +11,6 @@
 ## Major New Features
 
 * Input
-* Tween
 * Scenes
 * UI (Button, etc)
 * Audio
