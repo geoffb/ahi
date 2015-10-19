@@ -53,8 +53,6 @@ proto._initCamera = function (width, height) {
 	var cam = this.camera = Entity.fromPrefab("camera");
 	cam.camera.width = width;
 	cam.camera.height = height;
-	// cam.transform.position.x = Math.round(cam.camera.width / 2);
-	// cam.transform.position.y = Math.round(cam.camera.height / 2);
 	this.addEntity(cam);
 };
 
@@ -151,9 +149,7 @@ proto._render = function Engine__render () {
 
 	var entities = this._renderEntities;
 
-	// var rects = this._quadTree.retrieve(camBounds);
 	for (var i = 0, j = entities.length; i < j; ++i) {
-		// var rect = rects[i];
 		var entity = entities[i];
 		ctx.save();
 		entity.callComponents("render", [ctx, -camBounds.x, -camBounds.y]);
@@ -163,17 +159,6 @@ proto._render = function Engine__render () {
 		ctx.restore();
 	}
 
-	// var entities = this.entities.items;
-
-	// for (var i = 0, j = entities.length; i < j; ++i) {
-	// 	var entity = entities[i];
-	// 	ctx.save();
-	// 	entity.callComponents("render", [ctx, camBounds.x, camBounds.y]);
-	// 	if (this.renderGizmos) {
-	// 		entity.callComponents("renderGizmo", [ctx]);
-	// 	}
-	// 	ctx.restore();
-	// }
 	if (this.renderGizmos) {
 		this._renderGizmos(ctx, -camBounds.x, -camBounds.y);
 	}
