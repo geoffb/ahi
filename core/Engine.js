@@ -10,21 +10,24 @@ var tween = require("./tween");
 Entity.defineComponents(require("./components"));
 Entity.definePrefabs(require("./prefabs"));
 
-var exports = module.exports = function Engine () {
+var exports = module.exports = function Engine (width, height) {
+	this.width = width;
+	this.height = height;
+
 	this.entities = new Collection();
 
 	this.renderGizmos = true;
 
 	this._lastElapsed = 0;
 
-	this._quadTree = new QuadTree(0, 0, 640, 480);
+	this._quadTree = new QuadTree(0, 0, width, height);
 
 	this._collisionEntities = [];
 	this._renderEntities = [];
 
-	stage.init(640, 480);
+	stage.init(width, height);
 
-	this._initCamera(640, 480);
+	this._initCamera(width, height);
 
 	time.onUpdate(this.update.bind(this));
 };

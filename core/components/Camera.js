@@ -1,13 +1,21 @@
+var object = require("../../utils/object");
+
 var exports = module.exports = function Camera (conf) {
-	this.width = conf.width || 640;
-	this.height = conf.height || 480;
+	var conf = object.merge(conf, exports.defaults);
+
+	this.width = conf.width;
+	this.height = conf.height;
 	this.target = null;
+};
+
+exports.defaults = {
+	width: 1280,
+	height: 720
 };
 
 var proto = exports.prototype;
 
 proto.update = function (dt) {
-	// this.entity.transform.translate(1, 0);
 	if (this.target) {
 		var pos = this.entity.transform.position;
 		pos.x = this.target.transform.position.x;
@@ -41,10 +49,3 @@ Object.defineProperty(proto, "viewportAABB", {
 		};
 	}
 });
-
-// TODO:
-// Follow target
-// Pan to location
-// set/respect bounds
-// SHAKE!!
-// etc
