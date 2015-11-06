@@ -37,6 +37,7 @@ var proto = exports.prototype;
 proto.addEntity = function Engine_addEntity (entity) {
 	this.entities.add(entity.id, entity);
 	entity.setWorld(this);
+	entity.callComponents("spawn");
 };
 
 proto.start = function Engine_start () {
