@@ -87,6 +87,8 @@ proto._updateEntities = function Engine__updateEntities (dt) {
 
 	for (var i = 0, j = entities.length; i < j; ++i) {
 		var entity = entities[i];
+		if (!entity.active) { continue; }
+
 		entity.callComponents("update", [dt]);
 
 		if (

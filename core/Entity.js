@@ -8,6 +8,7 @@ var nextEntityId = 0;
 var exports = module.exports = function Entity (conf) {
 	this.id = nextEntityId++;
 	this.world = null;
+	this.active = true;
 
 	this._componentKeys = [];
 
@@ -38,7 +39,9 @@ exports.definePrefabs = function (prefabData) {
 
 exports.fromPrefab = function (prefabKey) {
 	var prefab = prefabs[prefabKey];
-	return new exports(prefab);
+	var entity = new exports(prefab);
+	entity.type = prefabKey;
+	return entity;
 };
 
 var proto = exports.prototype;
