@@ -36,6 +36,7 @@ var proto = exports.prototype;
 
 proto.addEntity = function Engine_addEntity (entity) {
 	this.entities.add(entity.id, entity);
+	entity.setWorld(this);
 };
 
 proto.start = function Engine_start () {
@@ -51,6 +52,16 @@ proto.update = function Engine_update (dt) {
 	this._updateEntities(dt);
 	this._collideEntities();
 	this._render();
+};
+
+proto.getEntities = function (fn) {
+	var matches = [];
+	this.entities.forEach(function (entity) {
+		if (fn(entity)) {
+			matches.push(entity);
+		}
+	});
+	return matches;
 };
 
 proto._initCamera = function (width, height) {

@@ -15,4 +15,9 @@ proto.get = function (key) {
 	return this.items[index];
 };
 
-// TODO: Remove, etc
+proto.forEach = function (fn) {
+	var items = this.items;
+	for (var i = 0, j = items.length; i < j; ++i) {
+		fn(items[i]);
+	}
+};

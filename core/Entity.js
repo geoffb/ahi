@@ -1,3 +1,5 @@
+var array = require("../utils/array");
+
 var components = {};
 var prefabs = {};
 
@@ -5,6 +7,7 @@ var nextEntityId = 0;
 
 var exports = module.exports = function Entity (conf) {
 	this.id = nextEntityId++;
+	this.world = null;
 
 	this._componentKeys = [];
 
@@ -50,6 +53,10 @@ proto.addComponent = function Entity_addComponent (key, conf) {
 	}
 };
 
+proto.hasComponent = function (key) {
+	return array.contains(this._componentKeys, key);
+};
+
 proto.callComponents = function Entity_callComponents (method, args) {
 	var keys = this._componentKeys;
 	for (var i = 0, j = keys.length; i < j; ++i) {
@@ -59,4 +66,8 @@ proto.callComponents = function Entity_callComponents (method, args) {
 			component[method].apply(component, args);
 		}
 	}
+};
+
+proto.setWorld = function (world) {
+	this.world = world;
 };
