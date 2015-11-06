@@ -16,7 +16,7 @@ var exports = module.exports = function Engine (width, height) {
 
 	this.entities = new Collection();
 
-	this.renderGizmos = true;
+	this.renderGizmos = false;
 
 	this._lastElapsed = 0;
 
