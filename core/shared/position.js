@@ -9,13 +9,27 @@ exports.moveToEntity = function (entityA, entityB) {
 	exports.moveToPoint(entityA, pos.x, pos.y);
 };
 
-exports.withinPointDistance = function (entity, x, y, distance) {
+exports.distanceToPoint = function (entity, x, y) {
 	var pos = entity.transform.position;
-	return math.distance(pos.x, pos.y, x, y) <= distance;
+	return math.distance(pos.x, pos.y, x, y);
 };
 
-exports.withinEntityDistance = function (entityA, entityB, distance) {
+exports.distanceToEntity = function (entityA, entityB) {
 	var pos = entityB.transform.position;
-	return exports.withinPointDistance(entityA, pos.x, pos.y, distance);
+	return exports.distanceToPoint(entityA, pos.x, pos.y);
 };
 
+exports.getNearestEntity = function (entity, fn) {
+	var matches = entity.world.getEntities(fn);
+	if (matches.length > 0) {
+		// Sort by distance from the target entity
+		matches.sort(function (a, b) {
+			var distA = exports.distanceToEntity(entity, a);
+			var distB = exports.distanceToEntity(entity, b);
+			return distA - distB;
+		});
+		return matches[0];
+	} else {
+		return null;
+	}
+};
