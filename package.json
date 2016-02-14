@@ -1,8 +1,16 @@
 {
   "name": "ahi",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "HTML5 canvas game engine",
+  "keywords": ["html5", "canvas", "game", "engine", "ecs", "entity", "component"],
+  "homepage": "https://github.com/geoffb/ahi",
+  "files": [
+    "core",
+    "math",
+    "utils"
+  ],
   "main": "core/Engine.js",
-  "author": "",
-  "license": "ISC"
+  "author": "Geoff Blair <gmblair@gmail.com>",
+  "license": "ISC",
+  "repository": "geoffb/ahi"
 }
