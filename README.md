@@ -16,7 +16,7 @@ Next, install the Ahi build tools (globally) via npm:
 
 This should add the `ahi` command to your path and will allow you to develop and build using Ahi.
 
-Now you're ready to creating an Ahi-based game. I find that example code is the best way to learn, so your first stop should be the [Ahi Examples repository](https://github.com/geoffb/ahi-examples).
+Now you're ready to create an Ahi-based game. I find that example code is the best way to learn, so your first stop should be the [Ahi Examples repository](https://github.com/geoffb/ahi-examples). After that we'll break down a simple example, file-by-file.
 
 ### Required files
 
