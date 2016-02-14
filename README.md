@@ -1,4 +1,4 @@
-# Ahi
+# Ahi HTML5 game engine
 
 ## About
 
